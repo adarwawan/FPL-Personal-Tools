@@ -11,6 +11,10 @@ import (
 	"sync"
 )
 
+const (
+	CURRENT_GAMEWEEK = 4
+)
+
 type Pick struct {
 	Element       int  `json:"element"`
 	Position      int  `json:"position"`
@@ -38,7 +42,7 @@ func max(a, b int) int {
 }
 
 func worker(id int, data []int, wg *sync.WaitGroup) (map[int]int, error) {
-	gameweek := 2
+	gameweek := CURRENT_GAMEWEEK
 	isPlayOnly := false
 	isCaptain := false
 	ownership := make(map[int]int)
@@ -131,7 +135,7 @@ func readTopManager(filename string) ([]int, error) {
 }
 
 func main() {
-	workers := 100
+	workers := 50
 
 	managerIDs, err := readTopManager("../top_manager.txt")
 	if err != nil {
