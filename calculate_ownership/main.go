@@ -12,7 +12,7 @@ import (
 )
 
 const (
-	CURRENT_GAMEWEEK = 5
+	CURRENT_GAMEWEEK = 6
 )
 
 type Pick struct {
