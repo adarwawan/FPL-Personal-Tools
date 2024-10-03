@@ -65,3 +65,11 @@ def get_teams_dict():
     # Create a dictionary mapping 'code' to 'name'
     team_dict = {team['id']: team['name'] for team in teams}
     return team_dict
+
+# Function to fetch fixture data
+def fetch_fixtures():
+    response = requests.get("https://fantasy.premierleague.com/api/fixtures/")
+    if response.status_code == 200:
+        return response.json()
+    else:
+        raise Exception("Failed to fetch fixtures")
